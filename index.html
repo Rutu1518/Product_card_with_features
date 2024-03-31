@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=d, initial-scale=1.0">
+    <title>Assignment 28</title>
+    <style>
+        body{
+            background-color: #f7f6f6;
+        }
+        .product-card{
+            background-color: rgb(232, 206, 252);
+            width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 30px auto;
+            padding-top: 10px;
+        }
+        .img{
+            /* background-color: #D9AFD9; */
+           
+            height: 150px;
+            width: 180px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 2px 1px black;
+        }
+        .card-body{
+            margin-left: 7px;
+            padding-bottom: 10px;
+        }
+        .product-title{
+            font-size: 20px;
+            text-align: center;
+        }
+        .product-description{
+            font-size: 15px;
+            padding-left: 10px;
+        }
+        .product-price{
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .quantity-btn-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            
+        }
+        .btn-quantity{
+            height: 25px;
+        }
+        .inc_amount{
+            font-size: 20px;
+
+        }
+        .quantity-text{
+            font-size: 25px;
+            margin: auto 10px;
+            cursor: pointer;
+        }
+        .btn-buyNow{
+            display: block;
+            background-image: linear-gradient(0deg, #f5c08b 0%,  #6df6af 100%);
+            background-color: rgb(49, 47, 47);
+            border-radius: 20px;
+            padding: 7px 20px;
+            cursor: pointer;
+            margin: 10px auto;
+            font-size: 20px;
+        
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="./img/icecream.jpeg" class="img"/>
+        <div class="card-body">
+            <h1 class="product-title">Chocolate Icecream</h1>
+            <p class="product-description">
+                One of the oldest flavors of ice creams, it is also one of the world's most popular. 
+            </p>
+
+            <p class="product-price">₹ 99/-</p>
+
+            <p id="show-quantity" class="show-quantity inc_amount">1 x 99</p>
+            <p id="show-total" class="show-total inc_amount">Total : 99</p>
+
+
+            <div class="quantity-btn-container">
+                <img src="./img/minus.png" class="btn-quantity" onclick="dec()"/>
+
+                <span class="quantity-text" id="quantity-text">1</span>
+
+                <img src="./img/more.png" class="btn-quantity" onclick="inc()"/>
+            </div>
+
+            <button type="button" class="btn-buyNow">Buy Now</button>
+        </div>
+    </div>
+
+    <script>
+         function inc(){
+            const quantityText = document.getElementById('quantity-text');
+         
+            const showQuantity = document.getElementById('show-quantity');
+
+            const showTotal = document.getElementById('show-total');
+           
+            let quantity = parseInt(quantityText.innerText);
+
+            if(quantity<10){
+                quantityText.innerText = ++quantity;
+            }
+            else{
+                alert("You can't add more than 10 items");
+            }
+            
+            showQuantity.innerText = `${quantity} x 99`;
+            showTotal.innerText = `Total: ${quantity * 99}`;
+        }
+
+        function dec(){
+            const quantityText = document.getElementById('quantity-text');
+         
+            const showQuantity = document.getElementById('show-quantity');
+
+            const showTotal = document.getElementById('show-total');
+          
+             let quantity = parseInt(quantityText.innerText);
+
+            if(quantity > 1){
+                quantityText.innerText = --quantity;
+            }
+            else{
+                alert("You can't add less than 1 item");
+            }
+
+            showQuantity.innerText =` ${quantity} x 99`;
+            showTotal.innerText = `Total: ${quantity * 99}`;
+        }
+        
+    </script>
+</body>
+</html>
